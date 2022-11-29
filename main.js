@@ -300,7 +300,7 @@ function sendComment(ID) {
             })
             .then((response) => {
                 showComments(ID);
-                console.log(response.data);
+                showAlert("Comment Added Succesfully", "success");
             })
             .catch((e) => {
                 showAlert(e.response.data.message, "danger");
