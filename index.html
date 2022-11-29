@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- ICONS BOOTSTRAP -->
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- alert -->
+    <div id="liveAlertPlaceholder" class="position-fixed"></div>
+    <!--// alert //-->
+
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div class="login">
+        <div class="modal fade" id="login-modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" id="user-login" class="form-control" placeholder="Username" value="mohammed" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="password-login" placeholder="password" value="1234567">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="close-login" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="submit-login" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Register Modal -->
+    <div class="register">
+        <div class="modal fade" id="register-modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Register New User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input required type="text" id="register-user" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="mb-3">
+                            <input required type="text" class="form-control" id="register-name" placeholder="Name">
+                        </div>
+                        <div class="mb-3">
+                            <span class="form-label">Profile Image</span>
+                            <input required type="file" class="form-control" id="register-image">
+                        </div>
+                        <div class="mb-3">
+                            <input required type="password" class="form-control" id="register-pass" placeholder="password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="close-register-modal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="submit-register-modal" class="btn btn-primary" onclick="registerUser()">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Post -->
+    <div class="newPost">
+        <div class="modal fade" id="newPost-modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Create New Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="postTitle">Title</label>
+                            <input required type="text" class="form-control" id="postTitle" placeholder="Name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+                            <textarea class="form-control" id="postBody" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image</label>
+                            <input class="form-control" type="file" id="postImage">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="close-post-modal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="create-post-modal" class="btn btn-primary" onclick="createNewPost()">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// Modals //-->
+
+
+    <!-- Navbar -->
+    <div class="main-nav col-9 justify-content-center mx-auto shadow">
+        <nav class="navbar navbar-expand-lg bg-light rounded pt-3">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Tarmeez</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                    </ul>
+                    <div class="buttons ms-auto d-flex align-items-center">
+                        <button id="login" type="button" data-bs-toggle="modal" data-bs-target="#login-modal" class="login-btns btn btn-outline-success me-1">Login</button>
+                        <button id="register" type="button" data-bs-toggle="modal" data-bs-target="#register-modal" class="login-btns btn btn-outline-success">Register</button>
+                        <button id="logout" type="button" class="btn btn-outline-danger" onclick="logoutUser()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--// Navbar //-->
+
+    <!-- ADD POST -->
+    <div id="addPost" data-bs-toggle="modal" data-bs-target="#newPost-modal" class="position-fixed bg-success">
+        <i class="bi bi-plus"></i>
+    </div>
+    <!--// ADD POST //-->
+
+    <!-- POSTS -->
+    <div class="posts col-9 mx-auto">
+        <!-- post -->
+
+        <!--// post //-->
+    </div>
+    <!--// POSTS //-->
+
+
+
+    <!-- scripts -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
